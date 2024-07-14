@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "group": "puffer_soup",
+  "ingredients": [
+    {
+      "item": "minecraft:seagrass"
+    },
+    {
+      "item": "pufferpuffer:cooked_pufferfish"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": {
+    "id": "pufferpuffer:puffer_soup",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "pufferpuffer:based_on": "water"
+      },
+      "minecraft:lore": []
+    }
+  }
+}
