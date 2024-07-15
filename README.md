@@ -1,4 +1,4 @@
-# PufferPuffer
+# PufferPuffer [![Modrinth](https://img.shields.io/badge/Modrinth-00AF5C?style=for-the-badge&logo=modrinth&logoColor=000000)](https://modrinth.com/mod/pufferpuffer) [![CurseForge](https://img.shields.io/badge/CurseForge-F16436?style=for-the-badge&logo=curseforge&logoColor=000000)](https://curseforge.com/minecraft/mc-mods/pufferpuffer)
 Have you ever thought about eating pufferfish? Maybe you wanted to make soup out of it? If your answer is yes, then this mod is for you. It allows you to cook pufferfish and make soups with it. Now pufferfish can be used for food and poisoning can be avoided
 
 # Features:
