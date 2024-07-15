@@ -1,4 +1,5 @@
 package ru.luk.pufferpuffer.mixin;
+import ru.luk.pufferpuffer.item.ModItems;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -11,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import ru.luk.pufferpuffer.item.ModItems;
 
 @Mixin(DolphinEntity.class)
 public class DolphinEntityMixin {
@@ -23,7 +23,7 @@ public class DolphinEntityMixin {
             ItemStack itemStack = item.getStack();
 
             if (itemStack.isOf(Items.PUFFERFISH) || itemStack.isOf(ModItems.INSTANCE.getCOOKED_PUFFERFISH_ITEM())) {
-                dolphin.heal(10.0f);
+                dolphin.heal(2.0f);
                 dolphin.addStatusEffect(
                     new StatusEffectInstance(
                             StatusEffects.SLOWNESS, 30 * 15, 4, false, false

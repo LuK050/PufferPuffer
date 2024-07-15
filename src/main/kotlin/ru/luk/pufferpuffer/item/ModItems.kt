@@ -9,44 +9,21 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.minecraft.component.ComponentMap
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.LoreComponent
 import net.minecraft.component.type.NbtComponent
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
 
 object ModItems {
     val COOKED_PUFFERFISH_ITEM: Item? = register(
-        CookedPufferfishItem(
-            Item.Settings().food(ModFoodComponents.COOKED_PUFFERFISH)
-        ),
+        CookedPufferfishItem(Item.Settings().food(ModFoodComponents.COOKED_PUFFERFISH)),
         "cooked_pufferfish"
     )
-    val PUFFER_SOUP_BASED_ON_WATER_ITEM: Item? = register(
-        PufferSoupItem(
-            Item.Settings().food(ModFoodComponents.PUFFER_SOUP)
-                .maxCount(1)
-                .component(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT.apply {
-                    it.putString("pufferpuffer:based_on", "water")
-                })
-                .component(
-                    DataComponentTypes.LORE,
-                    LoreComponent(listOf(Text.translatable("lore.pufferfish.based_on_water")))
-                )
-        ),
-        "puffer_soup"
-    )
-    val PUFFER_SOUP_BASED_ON_MILK_ITEM: Item? = register(
-        PufferSoupItem(
-            Item.Settings().food(ModFoodComponents.PUFFER_SOUP)
-                .maxCount(1)
-                .component(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT.apply {
-                    it.putString("pufferpuffer:based_on", "milk")
-                })
-                .component(
-                    DataComponentTypes.LORE,
-                    LoreComponent(listOf(Text.translatable("lore.pufferfish.based_on_milk")))
-                )
-        ),
+    val PUFFER_SOUP_ITEM: Item? = register(
+        PufferSoupItem(Item.Settings().food(ModFoodComponents.PUFFER_SOUP).maxCount(1)),
         "puffer_soup"
     )
 
@@ -57,8 +34,32 @@ object ModItems {
     fun initialize() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register {
             it.addAfter(Items.PUFFERFISH, COOKED_PUFFERFISH_ITEM)
-            it.addAfter(Items.RABBIT_STEW, PUFFER_SOUP_BASED_ON_MILK_ITEM)
-            it.addAfter(PUFFER_SOUP_BASED_ON_MILK_ITEM, PUFFER_SOUP_BASED_ON_WATER_ITEM)
+
+            val pufferSoupBasedOnMilkItemStack = ItemStack(PUFFER_SOUP_ITEM)
+            pufferSoupBasedOnMilkItemStack.set(
+                DataComponentTypes.CUSTOM_DATA,
+                NbtComponent.DEFAULT.apply { nbt ->
+                    nbt.putString("pufferpuffer:based_on", "milk")
+                }
+            )
+            pufferSoupBasedOnMilkItemStack.set(
+                DataComponentTypes.LORE,
+                LoreComponent(listOf(Text.translatable("lore.pufferfish.based_on_milk")))
+            )
+            it.addAfter(Items.RABBIT_STEW, pufferSoupBasedOnMilkItemStack)
+
+            val pufferSoupBasedOnWaterItemStack = ItemStack(PUFFER_SOUP_ITEM)
+            pufferSoupBasedOnWaterItemStack.set(
+                DataComponentTypes.CUSTOM_DATA,
+                NbtComponent.DEFAULT.apply { nbt ->
+                    nbt.putString("pufferpuffer:based_on", "water")
+                }
+            )
+            pufferSoupBasedOnWaterItemStack.set(
+                DataComponentTypes.LORE,
+                LoreComponent(listOf(Text.translatable("lore.pufferfish.based_on_water")))
+            )
+            it.addAfter(pufferSoupBasedOnMilkItemStack, pufferSoupBasedOnWaterItemStack)
         }
     }
 }

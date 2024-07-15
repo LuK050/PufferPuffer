@@ -3,13 +3,14 @@
 	"id": "pufferpuffer",
 	"version": "${version}",
 	"name": "PufferPuffer",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Follow if you love pufferpuffer",
 	"authors": [
-		"Me!"
+		"lluk",
+		"cheharka"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/pufferpuffer",
+		"sources": "https://github.com/LuK050/PufferPuffer"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/pufferpuffer/icon.png",

@@ -1,5 +1,6 @@
 package ru.luk.pufferpuffer.item.custom
 
+import net.minecraft.component.type.FoodComponents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
@@ -20,7 +21,7 @@ class CookedPufferfishItem(settings: Settings) : Item(settings) {
                 player.addStatusEffect(StatusEffectInstance(StatusEffects.HUNGER, 20 * 10, 2))
                 player.addStatusEffect(StatusEffectInstance(StatusEffects.NAUSEA, 20 * 10, 0))
             } else {
-                player.hungerManager.add(10, 0.6f)
+                player.hungerManager.add(6, 0.6f)
             }
         }
         return super.finishUsing(stack, world, user)
