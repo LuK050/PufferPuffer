@@ -1,6 +1,5 @@
 package ru.luk.pufferpuffer.item.custom
 
-import net.minecraft.component.type.FoodComponents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
